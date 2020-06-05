@@ -11,7 +11,7 @@ class LeetCodeQ11 {
     fun ContainerWithMostWater_MySelf(height: IntArray): Int {
         println("start")
 
-        var map = IntArray(height.size)
+        var map = HashMap<Int, Int>()
 
         var searchLength =  (height.size / 2) + (height.size % 2)
 
@@ -24,7 +24,7 @@ class LeetCodeQ11 {
         for(i in 0 .. searchLength) {
             println("i = ".plus(i))
 
-            if(map[i] != 0) {
+            if(map.containsKey(i)) {
                 continue
             }
             else if(height[i] <= nowLeftBoard) {
@@ -34,7 +34,7 @@ class LeetCodeQ11 {
             for(z in nowRightMaxIndex downTo i) {
                 println("z = ".plus(z))
 
-                if(map[z] != 0) {
+                if(map.containsKey(z)) {
                     continue
                 }
                 else if(height[z] <= nowRightBoard) {
@@ -66,9 +66,9 @@ class LeetCodeQ11 {
             }
         }
 
-        return map.max()?.let {
-            it
-        }?:0
+        return map.maxBy {
+            it.value
+        }?.value?:0
     }
 
     @ExperimentalStdlibApi
