@@ -12,6 +12,7 @@ class LeetCodeQ5 {
     /**
      * 馬拉車算法（Manacher‘s Algorithm）
      * 參考:https://www.cxyxiaowu.com/2665.html
+     * (從中間擴散開尋找最長，並將陣列長度統一成奇數，方便處理 (baab || bab) <--這種狀況)
      */
     @ExperimentalStdlibApi
     fun longestPalindrome_BetterSolution(s: String) : String{
